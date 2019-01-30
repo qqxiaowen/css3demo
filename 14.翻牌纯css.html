@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        background: skyblue;
+    }
+    ul::after{
+        display: block;
+        content: '';
+        clear: both;
+        overflow: hidden;
+    }
+   
+    ul li {
+        float: left;
+        width: 230px;
+        height: 350px;
+        margin: 20px 20px 0;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s linear;
+    }
+    ul li label{
+        display: block;
+    }
+    ul li div{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 230px;
+        height: 350px;
+        background-size: 100% 100% !important;
+        backface-visibility: hidden;
+    }
+    .clear{
+        width: 110px;
+        height: 50px;
+        line-height: 50px;
+        background: #ff6700;
+        color: #fff;
+        font-weight: 800;
+        font-size: 24px;
+        border-radius: 4px;
+        text-align: center;
+    }
+    .back{
+        background:url('./img/puke.jpg') no-repeat;
+    }
+    li:nth-child(1) .force {
+        background:url('./img/liuyifei.jpg') no-repeat;
+    }
+    li:nth-child(2) .force {
+        background:url('./img/fengzelina.jpg') no-repeat;
+    }
+    li:nth-child(3) .force {
+        background:url('./img/mawenli.png') no-repeat;
+    }
+    .force{
+        transform: rotateY(180deg);
+    }
+    #first:checked ~ ul li:nth-child(1) {
+        transform: rotateY(180deg)
+    }
+    #second:checked ~ ul li:nth-child(2){
+        transform: rotateY(180deg)
+    }
+    #three:checked ~ ul li:nth-child(3){
+        transform: rotateY(180deg) 
+    }
+</style>
+
+<body>
+    <input type="radio" id="first" name="111">
+    <input type="radio" id="second" name="111">
+    <input type="radio" id="three" name="111">
+    <input type="radio" id="clear" name="111">
+    <ul>
+        <li>
+            <label for="first">
+                <div class="force"></div>
+                <div class="back"></div>
+            </label>
+        </li>
+        <li>
+            <label for="second">
+                <div class="force"></div>
+                <div class="back"></div>
+            </label>
+        </li>
+        <li>
+            <label for="three">
+                <div class="force"></div>
+                <div class="back"></div>
+            </label>
+        </li>
+        <li>
+            <label for="clear" class="clear">清空</label>
+        </li>
+    </ul>
+</body>
+
+</html>

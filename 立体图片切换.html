@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+		.big_div{
+			margin: 100px auto;
+			width: 500px;
+			height: 280px;
+			position: relative;
+			/* transform-style: preserve-3d; */
+			perspective: 500px;
+		}
+		li{
+			width: 500px;
+			height: 280px;
+			position: absolute;
+			transition: all 1s ease 0s;
+		}
+		li img{
+			width: 500px;
+			height: 280px;
+		}
+		.king{
+			z-index: 3;
+		}
+		.left_1{
+			transform: translateX(-100px) rotateY(30deg) translateZ(-50px) ;
+			z-index: 2;
+		}
+		.left_2{
+			transform: translateX(-220px) rotateY(45deg) translateZ(-200px);
+			z-index: 1;
+		}
+		.right_1{
+			transform: translateX(100px) rotateY(-30deg) translateZ(-50px) ;
+			z-index: 2;
+		}
+		.right_2{
+			transform: translateX(220px) rotateY(-45deg) translateZ(-200px);
+			z-index: 1;
+		}
+		.after{
+			z-index: 0;
+		}
+		a{
+			position: absolute;
+			width: 70px;
+			height: 70px;
+			background: rgba(0, 0, 255, 0.5);
+			font-size: 40px;
+			z-index: 5;
+			text-align: center;
+			line-height: 70px;
+			color: #ffffff;
+			font-weight: 900;
+			top: 50%;
+			margin-top: -35px;
+		}
+		.after{
+			transform: translateZ(-200px);
+		}
+		#buttom_left{
+			left: -290px;
+		}
+		#buttom_right{
+			right: -290px;
+		}
+	</style>
+	<body>
+		<div class="big_div">
+			<ul id="list" class="list">
+				<li class="king">
+					<img src="img/qiehuan/1.jpg" alt="" />
+				</li>
+				<li class="left_1">
+					<img src="img/qiehuan/2.jpg" alt="" />
+				</li>
+				<li class="left_2">
+					<img src="img/qiehuan/3.jpg" alt="" />
+					</li>
+				<li class="after">
+					<img src="img/qiehuan/4.jpg" alt="" />
+				</li>
+				<li class="after">
+					<img src="img/qiehuan/5.jpg" alt="" />
+				</li>
+				<li class="after">
+					<img src="img/qiehuan/6.jpg" alt="" />
+				</li>
+				<li class="after">
+					<img src="img/qiehuan/7.jpg" alt="" />
+				</li>
+				<li class="right_2">
+					<img src="img/qiehuan/8.jpg" alt="" />
+				</li>
+				<li class="right_1">
+					<img src="img/qiehuan/9.jpg" alt="" />
+				</li>
+			</ul>
+			<a id="buttom_left" href="#"><</a>
+			<a id="buttom_right" href="#">></a>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var Oul=document.getElementById('list');
+		var Btnleft=document.getElementById('buttom_left');
+		var Btnright=document.getElementById('buttom_right');
+		var Oli=Oul.getElementsByTagName('li');
+		var arrClassName=['king','left_1','left_2','after','after','after','after','right_2','right_1'];
+		var num=0;
+		
+		//编写样式
+		function qiehuan(){
+			for(i=0;i<Oli.length;i++){
+				var j=i-num;
+				if(j<0){
+				j=Oli.length+j;	
+				}
+
+			Oli[i].	className=arrClassName[j%Oli.length];
+			}
+		}
+		//点击左按钮
+		Btnleft.onclick=function() {
+			num++;
+			if(num>Oli.length){
+				num=1;
+			}
+			qiehuan();
+		}
+		//点击右按钮
+		Btnright.onclick=function() {
+			num--;
+			qiehuan();
+		}
+		
+		//随时间变化
+		setInterval(function(){
+			num--;
+			qiehuan();
+			}, 3000);
+					
+		
+	</script>
+</html>

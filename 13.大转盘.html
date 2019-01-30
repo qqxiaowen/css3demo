@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.big{
+    position: relative;
+    width: 650px;
+    height: 600px;
+    background: url('./img/turntable-bg.jpg') no-repeat
+}
+.dish{
+    position: absolute;
+    top: 58px;
+    left: 115px;
+    width: 450px;
+    height: 450px;
+    background: url('./img/turntable.png') no-repeat;
+    transition: transform 3s ease;
+}
+span{
+    position: absolute;
+    top: 160px;
+    left: 210px;
+    color: #409eff;
+    font-size: 30px;
+    font-weight: 700;
+    user-select: none;
+    opacity:0;
+    display: block;
+    transition: opacity 0.5s;
+}
+
+.needle{
+    position: absolute;
+    top: 152px;
+    left: 254px;
+    width: 174px;
+    height: 228px;
+    background: url('./img/pointer.png') no-repeat;
+}
+</style>
+<body>
+    <div class="big">
+        <div class="dish"></div>
+        <div class="needle"></div>
+        <span>请等转盘停止再点</span>
+    </div>
+</body>
+<script>
+let needle = document.querySelector('.needle')
+let dish = document.querySelector('.dish')
+let span = document.querySelector('span')
+let num = 0
+var onOff = true;
+
+    needle.onclick = function() {
+        if(onOff){
+            onOff = false
+            let deg = Math.ceil(Math.random()*7) * 51.42857142857143 
+            num += deg + 720
+            dish.style.transform = `rotateZ(${num}deg)`
+            setTimeout(() => {
+                onOff = true;
+            },3000)
+        }else{
+            console.log('请等转盘停止再点')
+            span.style.opacity = 1
+            setTimeout(() => {
+                span.style.opacity = 0
+            },1500)
+        }
+       
+    }
+
+</script>
+</html>

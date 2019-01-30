@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+			list-style: none;
+		}
+		div{
+			margin: 100px auto;
+			border: 3px solid #9ACD32;
+			width: 400px;
+			height: 400px;
+			perspective: 1500px; /*视口,起到3d效果,加在最大的盒子上*/
+		}
+		ul{
+			transition: all 3s ease 0s;
+			position: relative;
+			transform-style: preserve-3d;/*图片变形后有立体效果*/
+			transform-origin: 50% 50% -200px;
+		}
+		li{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		ul,li,img{
+			width: 400px;
+			height: 400px;
+		}
+		li:nth-child(2){
+			transform: translateZ(-400px) rotateY(180deg);
+		}
+		li:nth-child(3){
+			transform: rotateY(90deg);
+			transform-origin: left;
+		}
+		li:nth-child(4){
+			transform: rotateY(-90deg);
+			transform-origin: right;
+		}
+		li:nth-child(5){
+			transform: rotateX(-90deg);
+			transform-origin: top;
+		}
+		li:nth-child(6){
+			transform: rotateX(90deg);
+			transform-origin:bottom;
+		}
+		div:hover ul{
+			transform: rotateX(360deg) rotateY(360deg);
+		}
+	</style>
+	<body>
+		<div>
+			<ul>
+				<li><img src="img/1.png" alt="前" /></li>
+				<li><img src="img/2.png" alt="后" /></li>
+				<li><img src="img/3.png" alt="左" /></li>
+				<li><img src="img/4.png" alt="右" /></li>
+				<li><img src="img/5.png" alt="上" /></li>
+				<li><img src="img/6.png" alt="下" /></li>
+			</ul>
+		</div
+	</body>
+</html>
