@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+* { margin: 0; padding: 0; list-style: none; }
+iframe {
+  width: 100%;
+  height: calc( 100vh - 40px );
+}
+ul {
+  display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+li {
+  width: 33.33%;
+  /* height: 40px; */
+  line-height: 50px;
+  background: rgb(245, 245, 185);
+}
+li:nth-child(2) {
+  background: rgb(241, 170, 170);
+}
+</style>
+<body>
+  <iframe src="http://baidu.com" frameborder="0"></iframe>
+  <ul>
+    <li data-index="1">1</li>
+    <li data-index="2">2</li>
+    <li data-index="3">3</li>
+  </ul>
+</body>
+</html>
+
+<script>
+let iframeDom = document.querySelector('iframe');
+let ulDom = document.querySelector('ul');
+let lisDom = document.querySelectorAll('li');
+let btn = [
+  {
+    url: 'http://baidu.com',
+    text: '百度'
+  },
+  {
+    url: 'https://www.bilibili.com/',
+    text: 'B站'
+  },
+  {
+    url: 'https://www.ruike1.com/forum.php',
+    text: '论坛'
+  },
+]
+lisDom.forEach((item, index) => {
+  item.innerHTML = btn[index].text;
+})
+ulDom.addEventListener('click', function(e) {
+  let index = e.target.getAttribute('data-index') - 1;
+  iframeDom.setAttribute('src', btn[index].url);
+})
+</script>
