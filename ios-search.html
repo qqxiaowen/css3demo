@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>测试查询字符串</div>
+  <div>
+    <p>cqpOpenId:</p>
+    <span class="id"></span>
+  </div>
+</body>
+<script>
+function getSearchVars(value) { // 方法获取url后面的参数
+  const reg = new RegExp("(^|&)" + value + "=([^&]*)(&|$)");
+  const r = location.search.substring(1).match(reg);
+  if (r) {
+    return r[2];
+  }
+  return '';
+}
+let id = getSearchVars('cqpOpenId');
+console.log(id);
+document.querySelector('span').innerHTML = id;
+</script>
+</html>
