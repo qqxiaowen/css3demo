@@ -23,7 +23,29 @@ function getSearchVars(value) { // 方法获取url后面的参数
   return '';
 }
 let id = getSearchVars('cqpOpenId');
-console.log(id);
+// console.log(id);
 document.querySelector('span').innerHTML = id;
+let url = `http://syytest.chenyue-invest.com/govcoupon-ln-onl/cqp/getToken`; // 生产环境
+
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'same-origin',
+    body: JSON.stringify({cqpOpenId: id})
+  }).then(res => {
+    if (res.status === 200) {
+      return (res.json().then(val => {
+        alert(val.respCode)
+        alert(val.data)
+      }).catch(() => {
+        alert('获取token失败！！');
+      }));
+    } else {
+      alert(res.status)
+    }
+  });
 </script>
 </html>
